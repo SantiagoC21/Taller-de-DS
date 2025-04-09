@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="3" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" namespace="std, isee" />
+        <name>frecuencia de manteniento en vehiculos de transporte</name>
+        <uuid>a9e3682a-319e-49b7-b0c5-3c135d2fd79d</uuid>
+        <vendor>isee systems, inc.</vendor>
+        <product version="10.0.6" lang="en">STELLA</product>
+    </header>
+    <style>
+        <model font-family="Arial" font-size="9" />
+        <interface font-family="Arial" font-size="9" />
+    </style>
+    <sim_specs method="Euler" time_units="Time">
+        <start>0</start>
+        <stop>12</stop>
+        <dt>0.25</dt>
+    </sim_specs>
+    <model_units />
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1920" height="966" />
+        <isee:security />
+        <isee:print_setup width="576" height="769" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <stock name="Disponibilidad_de_la_flota">
+            <inflow>Vehiculos_que_regresan_de_mantenimiento</inflow>
+            <outflow>Vehiculos_que_se_retiran_por_mantenimiento</outflow>
+            <non_negative />
+            <display x="869" y="1968" color="blue" />
+        </stock>
+        <stock name="Cantidad_de_vehiculos_en_operacion">
+            <inflow>Vehiculos_asignados_a_operar</inflow>
+            <outflow>Vehiculos_devueltos_al_deposito</outflow>
+            <non_negative />
+            <display x="1305" y="1912" color="blue" />
+        </stock>
+        <stock name="Componentes_desgastados">
+            <inflow>Componentes_desgastados_identificados</inflow>
+            <outflow>Componentes_reemplazados_en_mantenimiento</outflow>
+            <non_negative />
+            <display x="1237" y="2019" color="blue" />
+        </stock>
+        <stock name="Número_de_tecnicos_disponibles">
+            <inflow>Tecnicos_contratados</inflow>
+            <outflow>Tecnicos_asignados_a_mantenimiento</outflow>
+            <non_negative />
+            <display x="1620" y="2096" color="blue" />
+        </stock>
+        <stock name="Disponibilidad_de_talleres">
+            <inflow>Cantidad_de_plazas_sin_asignacion_de_mantenimiento</inflow>
+            <outflow>Cantidad_de_plazas_apartadas_por_mantenimiento</outflow>
+            <non_negative />
+            <display x="1819" y="2292" color="blue" />
+        </stock>
+        <stock name="Disponibilidad_de_repuestos">
+            <inflow>Repuestos_adquiridos</inflow>
+            <outflow>Repuestos_consumidos_en_mantenimiento</outflow>
+            <non_negative />
+            <display x="1565" y="2205" color="blue" />
+        </stock>
+        <stock name="Cantidad_de_fallas_mecanicas">
+            <inflow>Numero_de_veces_que_ocurre_una_falla_mecanica</inflow>
+            <outflow>Reparacion_de_fallas_mecanicas</outflow>
+            <non_negative />
+            <display x="1059" y="2227" color="blue" />
+        </stock>
+        <stock name="Cantidad_de_usuarios_satisfechos">
+            <inflow>Cantidad_de_opiniones_positivas</inflow>
+            <outflow>Cantidad_de_opiniones_negativas</outflow>
+            <non_negative />
+            <display x="1795" y="2544" color="blue" />
+        </stock>
+        <flow name="Vehiculos_que_regresan_de_mantenimiento">
+            <non_negative />
+            <display x="773" y="1972" color="blue">
+                <pts>
+                    <pt x="699" y="1972" />
+                    <pt x="847" y="1972" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Vehiculos_que_se_retiran_por_mantenimiento">
+            <non_negative />
+            <display x="960" y="1974" color="blue">
+                <pts>
+                    <pt x="891" y="1974" />
+                    <pt x="1029" y="1974" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Componentes_desgastados_identificados">
+            <non_negative />
+            <display x="1167" y="2018" color="blue">
+                <pts>
+                    <pt x="1120" y="2018" />
+                    <pt x="1215" y="2018" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Vehiculos_asignados_a_operar">
+            <non_negative />
+            <display x="1222" y="1916" color="blue">
+                <pts>
+                    <pt x="1162" y="1916" />
+                    <pt x="1283" y="1916" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Componentes_reemplazados_en_mantenimiento">
+            <non_negative />
+            <display x="1323" y="2020" color="blue">
+                <pts>
+                    <pt x="1259" y="2020" />
+                    <pt x="1387" y="2020" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Vehiculos_devueltos_al_deposito">
+            <non_negative />
+            <display x="1413" y="1912" color="blue">
+                <pts>
+                    <pt x="1327" y="1912" />
+                    <pt x="1499" y="1912" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Tecnicos_contratados">
+            <non_negative />
+            <display x="1527" y="2096" color="blue">
+                <pts>
+                    <pt x="1457" y="2096" />
+                    <pt x="1598" y="2096" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Tecnicos_asignados_a_mantenimiento">
+            <non_negative />
+            <display x="1729" y="2094" color="blue">
+                <pts>
+                    <pt x="1642" y="2094" />
+                    <pt x="1816" y="2094" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Repuestos_adquiridos">
+            <non_negative />
+            <display x="1474" y="2208" color="blue">
+                <pts>
+                    <pt x="1406" y="2208" />
+                    <pt x="1543" y="2208" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Repuestos_consumidos_en_mantenimiento">
+            <non_negative />
+            <display x="1656" y="2205" color="blue">
+                <pts>
+                    <pt x="1587" y="2205" />
+                    <pt x="1725" y="2205" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Cantidad_de_plazas_sin_asignacion_de_mantenimiento">
+            <non_negative />
+            <display x="1729" y="2294" color="blue">
+                <pts>
+                    <pt x="1662" y="2294" />
+                    <pt x="1797" y="2294" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Cantidad_de_plazas_apartadas_por_mantenimiento">
+            <non_negative />
+            <display x="1906" y="2291" color="blue">
+                <pts>
+                    <pt x="1841" y="2291" />
+                    <pt x="1972" y="2291" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Numero_de_veces_que_ocurre_una_falla_mecanica">
+            <non_negative />
+            <display x="975" y="2222" color="blue">
+                <pts>
+                    <pt x="914" y="2222" />
+                    <pt x="1037" y="2222" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Reparacion_de_fallas_mecanicas">
+            <non_negative />
+            <display x="1160" y="2220" color="blue">
+                <pts>
+                    <pt x="1081" y="2220" />
+                    <pt x="1240" y="2220" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Cantidad_de_opiniones_positivas">
+            <non_negative />
+            <display x="1706" y="2552" color="blue">
+                <pts>
+                    <pt x="1640" y="2552" />
+                    <pt x="1773" y="2552" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Cantidad_de_opiniones_negativas">
+            <non_negative />
+            <display x="1894" y="2546" color="blue">
+                <pts>
+                    <pt x="1817" y="2546" />
+                    <pt x="1972" y="2546" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="Ocurrecia_de_una_falla_mecanica">
+            <display x="1250" y="2132" color="blue" />
+        </aux>
+        <display page_width="576" page_height="769" page_cols="5" page_rows="5" isee:converter_size="medium" zoom="150" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" interval="DT" scroll_x="947" scroll_y="1847" />
+        <interface page_width="788" page_height="528">
+            <simulation_delay>0.1</simulation_delay>
+        </interface>
+    </model>
+</xmile>

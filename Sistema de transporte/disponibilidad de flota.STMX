@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xmile version="1.0" level="3" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" namespace="std, isee" />
+        <name>disponibilidad de flota</name>
+        <uuid>a9e3682a-319e-49b7-b0c5-3c135d2fd79d</uuid>
+        <vendor>isee systems, inc.</vendor>
+        <product version="10.0.6" lang="en">STELLA</product>
+    </header>
+    <style>
+        <model font-family="Arial" font-size="9" />
+        <interface font-family="Arial" font-size="9" />
+    </style>
+    <sim_specs method="Euler" time_units="Weeks">
+        <start>0</start>
+        <stop>52</stop>
+        <dt>1</dt>
+    </sim_specs>
+    <model_units />
+    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1902" height="948" />
+        <isee:security />
+        <isee:print_setup width="576" height="769" />
+    </isee:prefs>
+    <isee:equation_prefs order_by="module" />
+    <model>
+        <stock name="Disponibilidad_de_la_flota">
+            <eqn>0</eqn>
+            <inflow>Vehiculos_que_regresan_de_mantenimiento</inflow>
+            <outflow>Vehiculos_que_se_retiran_por_mantenimiento</outflow>
+            <non_negative />
+            <display x="430" y="230" color="blue" />
+        </stock>
+        <flow name="Vehiculos_que_regresan_de_mantenimiento">
+            <eqn>Cantidad_de_vehiculos_en_mantenimiento/Tiempo_promedio_de_mantenimiento</eqn>
+            <non_negative />
+            <display x="334" y="234" color="blue">
+                <scale min="0" max="5" />
+                <pts>
+                    <pt x="260" y="234" />
+                    <pt x="408" y="234" />
+                </pts>
+            </display>
+        </flow>
+        <flow name="Vehiculos_que_se_retiran_por_mantenimiento">
+            <eqn>Disponibilidad_de_la_flota*Tasa_de_falla_de_la_flota</eqn>
+            <non_negative />
+            <display x="521" y="236" color="blue">
+                <pts>
+                    <pt x="452" y="236" />
+                    <pt x="590" y="236" />
+                </pts>
+            </display>
+        </flow>
+        <aux name="Tasa_de_falla_de_la_flota">
+            <eqn>0.05</eqn>
+            <display x="533" y="335" color="blue" />
+        </aux>
+        <aux name="Tiempo_promedio_de_mantenimiento">
+            <eqn>2</eqn>
+            <display x="176" y="279" color="blue" />
+        </aux>
+        <aux name="Total_de_la_flota">
+            <eqn>50</eqn>
+            <display x="484" y="97" color="blue" />
+        </aux>
+        <aux name="Cantidad_de_vehiculos_en_mantenimiento">
+            <eqn>Total_de_la_flota-Disponibilidad_de_la_flota</eqn>
+            <display x="336" y="155" color="blue" label_side="top" label_angle="162" />
+        </aux>
+        <display page_width="576" page_height="769" page_cols="2" isee:converter_size="medium" zoom="150" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" interval="DT" scroll_y="40">
+            <connector x="337" y="164" uid="0" color="#FF007F">
+                <from>Cantidad_de_vehiculos_en_mantenimiento</from>
+                <to>Vehiculos_que_regresan_de_mantenimiento</to>
+            </connector>
+            <connector x="534" y="326" uid="1" color="#FF007F">
+                <from>Tasa_de_falla_de_la_flota</from>
+                <to>Vehiculos_que_se_retiran_por_mantenimiento</to>
+            </connector>
+            <connector x="476" y="101" uid="2" color="#FF007F">
+                <from>Total_de_la_flota</from>
+                <to>Cantidad_de_vehiculos_en_mantenimiento</to>
+            </connector>
+            <connector x="431" y="213" uid="3" color="#FF007F">
+                <from>Disponibilidad_de_la_flota</from>
+                <to>Cantidad_de_vehiculos_en_mantenimiento</to>
+            </connector>
+            <connector x="443" y="213" uid="4" color="#FF007F">
+                <from>Disponibilidad_de_la_flota</from>
+                <to>Vehiculos_que_se_retiran_por_mantenimiento</to>
+            </connector>
+            <connector x="183" y="282" uid="5" color="#FF007F">
+                <from>Tiempo_promedio_de_mantenimiento</from>
+                <to>Vehiculos_que_regresan_de_mantenimiento</to>
+            </connector>
+            <stacked_container height="513" width="893" uid="6">
+                <graph type="time_series" background="#FFFFC9" show_grid="true" plot_numbers="true" isee:use_five_segments="false" date_time="2025-04-08T17:51:25Z" time_precision="2" from="0" to="52">
+                    <title>Untitled</title>
+                    <plot index="0" pen_width="1" color="blue" precision="1" show_y_axis="true">
+                        <entity name="Disponibilidad_de_la_flota" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="163" y="409" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 1" type="graph" icon_of="6" />
+            <stacked_container height="282" width="492" uid="7">
+                <graph type="time_series" background="#FFFFC9" show_grid="true" plot_numbers="true" isee:use_five_segments="false" date_time="2025-04-08T17:51:25Z" time_precision="2" from="0" to="52">
+                    <title>Untitled</title>
+                    <plot index="0" pen_width="1" color="blue" precision="1" show_y_axis="true">
+                        <entity name="Vehiculos_que_regresan_de_mantenimiento" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="212" y="410" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 2" type="graph" icon_of="7" />
+            <stacked_container height="282" width="492" uid="8">
+                <graph type="time_series" background="#FFFFC9" show_grid="true" plot_numbers="true" isee:use_five_segments="false" date_time="2025-04-08T17:51:25Z" time_precision="2" from="0" to="52">
+                    <title>Untitled</title>
+                    <plot index="0" pen_width="1" color="blue" precision="1" show_y_axis="true">
+                        <entity name="Vehiculos_que_se_retiran_por_mantenimiento" />
+                    </plot>
+                </graph>
+            </stacked_container>
+            <pad_icon x="256" y="412" width="26" height="22" color="#008F44" label_side="bottom" label="Graph 3" type="graph" icon_of="8" />
+            <stacked_container height="496" width="607" uid="9">
+                <table font-size="9" background="#E0E0E0" columns_width="63" column_width="63" orientation="vertical" interval="DT" date_time="2025-04-08T17:27:46Z">
+                    <title>Untitled Table</title>
+                    <item type="time" color="black" precision="max" width="100" />
+                    <item color="black" precision="0.01" delimit_000s="true" index="0">
+                        <entity name="Disponibilidad_de_la_flota" />
+                    </item>
+                    <item color="black" precision="0.01" delimit_000s="true" index="1">
+                        <entity name="Vehiculos_que_regresan_de_mantenimiento" />
+                    </item>
+                    <item color="black" precision="0.01" delimit_000s="true" index="2">
+                        <entity name="Vehiculos_que_se_retiran_por_mantenimiento" />
+                    </item>
+                    <item color="black" precision="0.01" delimit_000s="true" index="3">
+                        <entity name="Cantidad_de_vehiculos_en_mantenimiento" />
+                    </item>
+                </table>
+            </stacked_container>
+            <pad_icon x="385" y="470" width="26" height="22" color="#008F44" label_side="bottom" label="Table 1" type="table" icon_of="9" />
+        </display>
+        <interface page_width="788" page_height="528">
+            <simulation_delay>0.1</simulation_delay>
+        </interface>
+        <popup x="490" y="495" content="6" />
+        <popup x="637" y="458" content="7" />
+        <popup x="442" y="569" content="8" />
+        <popup x="865" y="458" content="9" />
+    </model>
+</xmile>
