@@ -2,7 +2,7 @@
 <xmile version="1.0" level="3" xmlns="http://www.systemdynamics.org/XMILE" xmlns:isee="http://iseesystems.com/XMILE">
     <header>
         <smile version="1.0" namespace="std, isee" />
-        <name>cantidad de fallas mecanicas</name>
+        <name>frecuencia de mantenimiento de vehiculos</name>
         <uuid>a9e3682a-319e-49b7-b0c5-3c135d2fd79d</uuid>
         <vendor>isee systems, inc.</vendor>
         <product version="10.0.6" lang="en">STELLA</product>
@@ -17,8 +17,8 @@
         <dt>0.25</dt>
     </sim_specs>
     <model_units />
-    <isee:prefs layer="model" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
-        <isee:window width="1920" height="989" />
+    <isee:prefs layer="map" grid_width="20" grid_height="50" divide_by_zero_alert="true" hide_taskbar="true" show_module_prefix="true">
+        <isee:window width="1904" height="973" />
         <isee:security />
         <isee:print_setup width="595" height="842" />
     </isee:prefs>
@@ -29,26 +29,26 @@
             <inflow>Vehiculos_asignados_a_operar</inflow>
             <outflow>Vehiculos_devueltos_al_deposito</outflow>
             <non_negative />
-            <display x="710" y="510" color="blue" />
+            <display x="760" y="560" color="blue" />
         </stock>
         <flow name="Vehiculos_asignados_a_operar">
             <eqn>MIN(Demanda_de_operacion, Disponibilidad_de_la_flota*Tasa_de_asignacion)</eqn>
             <non_negative />
-            <display x="552" y="510" color="blue">
+            <display x="602" y="560" color="blue">
                 <pts>
-                    <pt x="416" y="459" />
-                    <pt x="416" y="510" />
-                    <pt x="688" y="510" />
+                    <pt x="466" y="509" />
+                    <pt x="466" y="560" />
+                    <pt x="738" y="560" />
                 </pts>
             </display>
         </flow>
         <flow name="Vehiculos_devueltos_al_deposito">
             <eqn>Cantidad_de_vehiculos_en_operacion*Tasa_de_retorno_al_deposito</eqn>
             <non_negative />
-            <display x="832" y="514" color="blue">
+            <display x="882" y="564" color="blue">
                 <pts>
-                    <pt x="732" y="514" />
-                    <pt x="933" y="514" />
+                    <pt x="782" y="564" />
+                    <pt x="983" y="564" />
                 </pts>
             </display>
         </flow>
@@ -58,56 +58,56 @@
             <outflow>Vehiculos_que_se_retiran_por_mantenimiento</outflow>
             <outflow>Vehiculos_asignados_a_operar</outflow>
             <non_negative />
-            <display x="416" y="442" color="blue" />
+            <display x="466" y="492" color="blue" />
         </stock>
         <flow name="Vehiculos_que_regresan_de_mantenimiento">
             <eqn>Cantidad_de_vehiculos_en_mantenimiento/Tiempo_promedio_de_mantenimiento</eqn>
             <non_negative />
-            <display x="310" y="427" color="blue">
+            <display x="360" y="477" color="blue">
                 <scale min="0" max="5" />
                 <pts>
-                    <pt x="226" y="427" />
-                    <pt x="394" y="427" />
+                    <pt x="276" y="477" />
+                    <pt x="444" y="477" />
                 </pts>
             </display>
         </flow>
         <flow name="Vehiculos_que_se_retiran_por_mantenimiento">
             <eqn>Vehiculos_operativos_que_mostraron_fallas*Tasa_de_inoperatividad_por_falla</eqn>
             <non_negative />
-            <display x="497" y="429" color="blue">
+            <display x="547" y="479" color="blue">
                 <pts>
-                    <pt x="438" y="429" />
-                    <pt x="556" y="429" />
+                    <pt x="488" y="479" />
+                    <pt x="606" y="479" />
                 </pts>
             </display>
         </flow>
         <aux name="Tasa_de_inoperatividad_por_falla">
             <eqn>0.05</eqn>
-            <display x="574" y="362" color="blue" />
+            <display x="624" y="412" color="blue" />
         </aux>
         <aux name="Tiempo_promedio_de_mantenimiento">
             <eqn>2</eqn>
-            <display x="372" y="557" color="blue" />
+            <display x="422" y="607" color="blue" />
         </aux>
         <aux name="Total_de_la_flota">
             <eqn>50</eqn>
-            <display x="422" y="303" color="blue" />
+            <display x="472" y="353" color="blue" />
         </aux>
         <aux name="Cantidad_de_vehiculos_en_mantenimiento">
             <eqn>Total_de_la_flota-Disponibilidad_de_la_flota</eqn>
-            <display x="358" y="347" color="blue" label_side="top" label_angle="162" />
+            <display x="408" y="397" color="blue" label_side="top" label_angle="162" />
         </aux>
         <aux name="Demanda_de_operacion">
             <eqn>30</eqn>
-            <display x="667" y="383" color="blue" />
+            <display x="717" y="433" color="blue" />
         </aux>
         <aux name="Tasa_de_asignacion">
             <eqn>0.7</eqn>
-            <display x="489" y="551" color="blue" />
+            <display x="539" y="601" color="blue" />
         </aux>
         <aux name="Tasa_de_retorno_al_deposito">
             <eqn>0.1</eqn>
-            <display x="697" y="564" color="blue" label_side="top" label_angle="153" />
+            <display x="747" y="614" color="blue" label_side="top" label_angle="153" />
         </aux>
         <stock name="Cantidad_de_fallas_mecanicas">
             <eqn>0</eqn>
@@ -115,259 +115,259 @@
             <outflow>Reparacion_de_fallas_mecanicas</outflow>
             <outflow>Cantidad_de_repariones_preventivas</outflow>
             <non_negative />
-            <display x="1084" y="389" color="blue" />
+            <display x="1134" y="439" color="blue" />
         </stock>
         <flow name="Numero_de_veces_que_ocurre_una_falla_mecanica">
             <eqn>Tasa_de_fallas_mecanicas*Cantidad_de_malas_maniobras</eqn>
             <non_negative />
-            <display x="1000" y="384" color="blue">
+            <display x="1050" y="434" color="blue">
                 <pts>
-                    <pt x="939" y="384" />
-                    <pt x="1062" y="384" />
+                    <pt x="989" y="434" />
+                    <pt x="1112" y="434" />
                 </pts>
             </display>
         </flow>
         <flow name="Reparacion_de_fallas_mecanicas">
             <eqn>Cantidad_de_vehiculos_destinados_a_mantenimiento_correctivo*Cantidad_de_fallas_mecanicas</eqn>
             <non_negative />
-            <display x="1185" y="382" color="blue">
+            <display x="1235" y="432" color="blue">
                 <pts>
-                    <pt x="1106" y="382" />
-                    <pt x="1265" y="382" />
+                    <pt x="1156" y="432" />
+                    <pt x="1315" y="432" />
                 </pts>
             </display>
         </flow>
         <aux name="Cantidad_promedio_de_malas_maniobras_por_vehiculo">
             <eqn>15</eqn>
-            <display x="777" y="358" color="blue" />
+            <display x="827" y="408" color="blue" />
         </aux>
         <aux name="Cantidad_de_malas_maniobras">
             <eqn>Cantidad_de_vehiculos_en_operacion*Cantidad_promedio_de_malas_maniobras_por_vehiculo</eqn>
-            <display x="860" y="415" color="blue" />
+            <display x="910" y="465" color="blue" />
         </aux>
         <aux name="Tasa_de_fallas_mecanicas">
             <eqn>0.05</eqn>
-            <display x="843" y="292" color="blue" />
+            <display x="893" y="342" color="blue" />
         </aux>
         <aux name="Vehiculos_operativos_que_mostraron_fallas">
             <eqn>Cantidad_de_vehiculos_en_operacion*Tasa_de_fallas_mecanicas</eqn>
-            <display x="666" y="283" color="blue" />
+            <display x="716" y="333" color="blue" />
         </aux>
         <stock name="Disponibilidad_de_talleres">
-            <eqn>15</eqn>
+            <eqn>40</eqn>
             <inflow>Cantidad_de_plazas_sin_asignacion_de_mantenimiento</inflow>
             <outflow>Cantidad_de_plazas_apartadas_por_mantenimiento</outflow>
             <non_negative />
-            <display x="809" y="826" color="blue" />
+            <display x="859" y="876" color="blue" />
         </stock>
         <flow name="Cantidad_de_plazas_sin_asignacion_de_mantenimiento">
             <eqn>Cantidad_de_plazas_ocupadas*Tasa_de_liberacion_de_plazas</eqn>
             <non_negative />
-            <display x="719" y="828" color="blue">
+            <display x="769" y="878" color="blue">
                 <pts>
-                    <pt x="652" y="828" />
-                    <pt x="787" y="828" />
+                    <pt x="702" y="878" />
+                    <pt x="837" y="878" />
                 </pts>
             </display>
         </flow>
         <flow name="Cantidad_de_plazas_apartadas_por_mantenimiento">
             <eqn>MIN(Demanda_por_mantenimiento / Capacidad_de_atencion_por_plaza , Disponibilidad_de_talleres)</eqn>
             <non_negative />
-            <display x="896" y="825" color="blue">
+            <display x="946" y="875" color="blue">
                 <pts>
-                    <pt x="831" y="825" />
-                    <pt x="962" y="825" />
+                    <pt x="881" y="875" />
+                    <pt x="1012" y="875" />
                 </pts>
             </display>
         </flow>
         <aux name="Demanda_por_mantenimiento">
             <eqn>Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino+Cantidad_de_vehiculos_destinados_a_mantenimiento_correctivo</eqn>
-            <display x="853" y="706" color="blue" />
+            <display x="903" y="756" color="blue" />
         </aux>
         <aux name="Capacidad_de_atencion_por_plaza">
             <eqn>1</eqn>
-            <display x="916" y="909" color="blue" />
+            <display x="966" y="959" color="blue" />
         </aux>
         <aux name="Tasa_de_liberacion_de_plazas">
             <eqn>Cantidad_de_vehiculos_que_terminan_el_mantenimiento_por_semana/Tiempo_promedio_de_mantenimiento</eqn>
-            <display x="603" y="593" color="blue" />
+            <display x="653" y="643" color="blue" />
         </aux>
         <aux name="Total_de_plazas">
-            <eqn>20</eqn>
-            <display x="680" y="662" color="blue" />
+            <eqn>40</eqn>
+            <display x="730" y="712" color="blue" />
         </aux>
         <aux name="Cantidad_de_plazas_ocupadas">
             <eqn>Total_de_plazas-Disponibilidad_de_talleres</eqn>
-            <display x="792" y="746" color="blue" />
+            <display x="842" y="796" color="blue" />
         </aux>
         <aux name="Cantidad_de_vehiculos_destinados_a_mantenimiento_correctivo" flow_concept="true">
             <eqn>Proporcion_de_vehiculos_que_van_a_mantenimiento_correctivo*Vehiculos_que_se_retiran_por_mantenimiento</eqn>
-            <display x="959" y="585" color="blue" label_angle="321" />
+            <display x="1009" y="635" color="blue" label_angle="321" />
         </aux>
         <aux name="Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino" flow_concept="true">
             <eqn>(1-Proporcion_de_vehiculos_que_van_a_mantenimiento_correctivo)*Vehiculos_que_se_retiran_por_mantenimiento</eqn>
-            <display x="1045" y="738" color="blue" />
+            <display x="1095" y="788" color="blue" />
         </aux>
         <aux name="Cantidad_de_vehiculos_que_terminan_el_mantenimiento_por_semana">
             <eqn>20</eqn>
-            <display x="500" y="700" color="blue" />
+            <display x="550" y="750" color="blue" />
         </aux>
         <flow name="Cantidad_de_repariones_preventivas">
             <eqn>Cantidad_de_fallas_mecanicas*Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino</eqn>
             <non_negative />
-            <display x="1106" y="521" color="blue" label_angle="278">
+            <display x="1156" y="571" color="blue" label_angle="277">
                 <pts>
-                    <pt x="1106" y="406" />
-                    <pt x="1106" y="637" />
+                    <pt x="1156" y="456" />
+                    <pt x="1156" y="687" />
                 </pts>
             </display>
         </flow>
         <aux name="Proporcion_de_vehiculos_que_van_a_mantenimiento_correctivo">
             <eqn>0.4</eqn>
-            <display x="745" y="613" color="blue" />
+            <display x="795" y="663" color="blue" />
         </aux>
-        <display page_width="595" page_height="842" page_cols="5" page_rows="5" isee:converter_size="medium" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" interval="DT" scroll_x="105" scroll_y="72">
-            <connector x="719" y="494" uid="0" color="#FF007F">
-                <from>Cantidad_de_vehiculos_en_operacion</from>
-                <to>Cantidad_de_malas_maniobras</to>
-            </connector>
-            <connector x="786" y="358" uid="1" color="#FF007F">
-                <from>Cantidad_promedio_de_malas_maniobras_por_vehiculo</from>
-                <to>Cantidad_de_malas_maniobras</to>
-            </connector>
-            <connector x="706" y="561" uid="2" color="#FF007F">
-                <from>Tasa_de_retorno_al_deposito</from>
-                <to>Vehiculos_devueltos_al_deposito</to>
-            </connector>
-            <connector x="726" y="493" uid="3" color="#FF007F">
-                <from>Cantidad_de_vehiculos_en_operacion</from>
-                <to>Vehiculos_devueltos_al_deposito</to>
-            </connector>
-            <connector x="363" y="559" uid="4" color="#FF007F">
-                <from>Tiempo_promedio_de_mantenimiento</from>
-                <to>Vehiculos_que_regresan_de_mantenimiento</to>
-            </connector>
-            <connector x="661" y="389" uid="5" color="#FF007F">
-                <from>Demanda_de_operacion</from>
-                <to>Vehiculos_asignados_a_operar</to>
-            </connector>
-            <connector x="495" y="557" uid="6" color="#FF007F">
-                <from>Tasa_de_asignacion</from>
-                <to>Vehiculos_asignados_a_operar</to>
-            </connector>
-            <connector x="418" y="295" uid="7" color="#FF007F">
-                <from>Total_de_la_flota</from>
-                <to>Cantidad_de_vehiculos_en_mantenimiento</to>
-            </connector>
-            <connector x="908" y="906" uid="8" color="#FF007F">
-                <from>Capacidad_de_atencion_por_plaza</from>
-                <to>Cantidad_de_plazas_apartadas_por_mantenimiento</to>
-            </connector>
-            <connector x="861" y="710" uid="9" color="#FF007F">
-                <from>Demanda_por_mantenimiento</from>
-                <to>Cantidad_de_plazas_apartadas_por_mantenimiento</to>
-            </connector>
-            <connector x="831" y="812" uid="10" color="#FF007F">
-                <from>Disponibilidad_de_talleres</from>
-                <to>Cantidad_de_plazas_apartadas_por_mantenimiento</to>
-            </connector>
-            <connector x="608" y="601" uid="11" color="#FF007F">
-                <from>Tasa_de_liberacion_de_plazas</from>
-                <to>Cantidad_de_plazas_sin_asignacion_de_mantenimiento</to>
-            </connector>
-            <connector x="686" y="669" uid="12" color="#FF007F">
-                <from>Total_de_plazas</from>
-                <to>Cantidad_de_plazas_ocupadas</to>
-            </connector>
-            <connector x="709" y="493" uid="13" color="#FF007F">
-                <from>Cantidad_de_vehiculos_en_operacion</from>
+        <display page_width="595" page_height="842" page_cols="3" page_rows="2" isee:converter_size="medium" isee:animate_flows="true" isee:animate_stocks="true" isee:animate_converters="true" interval="DT" scroll_y="136">
+            <connector x="884" y="340" uid="0" color="#FF007F">
+                <from>Tasa_de_fallas_mecanicas</from>
                 <to>Vehiculos_operativos_que_mostraron_fallas</to>
             </connector>
-            <connector x="787" y="815" uid="14" color="#FF007F">
-                <from>Disponibilidad_de_talleres</from>
-                <to>Cantidad_de_plazas_ocupadas</to>
+            <connector x="1093" y="778" uid="1" color="#FF007F">
+                <from>Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino</from>
+                <to>Cantidad_de_repariones_preventivas</to>
             </connector>
-            <connector x="657" y="281" uid="15" color="#FF007F">
-                <from>Vehiculos_operativos_que_mostraron_fallas</from>
-                <to>Vehiculos_que_se_retiran_por_mantenimiento</to>
-            </connector>
-            <connector x="349" y="350" uid="16" color="#FF007F">
-                <from>Cantidad_de_vehiculos_en_mantenimiento</from>
-                <to>Vehiculos_que_regresan_de_mantenimiento</to>
-            </connector>
-            <connector x="438" y="454" uid="17" color="#FF007F">
+            <connector x="488" y="504" uid="2" color="#FF007F">
                 <from>Disponibilidad_de_la_flota</from>
                 <to>Vehiculos_asignados_a_operar</to>
             </connector>
-            <connector x="565" y="362" uid="18" color="#FF007F">
-                <from>Tasa_de_inoperatividad_por_falla</from>
-                <to>Vehiculos_que_se_retiran_por_mantenimiento</to>
+            <connector x="759" y="543" uid="3" color="#FF007F">
+                <from>Cantidad_de_vehiculos_en_operacion</from>
+                <to>Vehiculos_operativos_que_mostraron_fallas</to>
             </connector>
-            <connector x="783" y="746" uid="19" color="#FF007F">
+            <connector x="776" y="543" uid="4" color="#FF007F">
+                <from>Cantidad_de_vehiculos_en_operacion</from>
+                <to>Vehiculos_devueltos_al_deposito</to>
+            </connector>
+            <connector x="833" y="796" uid="5" color="#FF007F">
                 <from>Cantidad_de_plazas_ocupadas</from>
                 <to>Cantidad_de_plazas_sin_asignacion_de_mantenimiento</to>
             </connector>
-            <connector x="1106" y="375" uid="20" color="#FF007F">
-                <from>Cantidad_de_fallas_mecanicas</from>
-                <to>Reparacion_de_fallas_mecanicas</to>
+            <connector x="911" y="760" uid="6" color="#FF007F">
+                <from>Demanda_por_mantenimiento</from>
+                <to>Cantidad_de_plazas_apartadas_por_mantenimiento</to>
             </connector>
-            <connector x="869" y="413" uid="21" color="#FF007F">
-                <from>Cantidad_de_malas_maniobras</from>
-                <to>Numero_de_veces_que_ocurre_una_falla_mecanica</to>
+            <connector x="711" y="439" uid="7" color="#FF007F">
+                <from>Demanda_de_operacion</from>
+                <to>Vehiculos_asignados_a_operar</to>
             </connector>
-            <connector x="836" y="288" uid="22" color="#FF007F">
-                <from>Tasa_de_fallas_mecanicas</from>
-                <to>Vehiculos_operativos_que_mostraron_fallas</to>
+            <connector x="468" y="345" uid="8" color="#FF007F">
+                <from>Total_de_la_flota</from>
+                <to>Cantidad_de_vehiculos_en_mantenimiento</to>
             </connector>
-            <connector x="851" y="292" uid="23" color="#FF007F">
-                <from>Tasa_de_fallas_mecanicas</from>
-                <to>Numero_de_veces_que_ocurre_una_falla_mecanica</to>
+            <connector x="736" y="719" uid="9" color="#FF007F">
+                <from>Total_de_plazas</from>
+                <to>Cantidad_de_plazas_ocupadas</to>
             </connector>
-            <connector x="1038" y="745" uid="24" color="#FF007F">
-                <from>Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino</from>
-                <to>Demanda_por_mantenimiento</to>
-            </connector>
-            <connector x="958" y="593" uid="25" color="#FF007F">
-                <from>Cantidad_de_vehiculos_destinados_a_mantenimiento_correctivo</from>
-                <to>Demanda_por_mantenimiento</to>
-            </connector>
-            <connector x="375" y="566" uid="26" color="#FF007F">
+            <connector x="424" y="616" uid="10" color="#FF007F">
                 <from>Tiempo_promedio_de_mantenimiento</from>
                 <to>Tasa_de_liberacion_de_plazas</to>
             </connector>
-            <connector x="509" y="696" uid="27" color="#FF007F">
-                <from>Cantidad_de_vehiculos_que_terminan_el_mantenimiento_por_semana</from>
-                <to>Tasa_de_liberacion_de_plazas</to>
+            <connector x="658" y="651" uid="11" color="#FF007F">
+                <from>Tasa_de_liberacion_de_plazas</from>
+                <to>Cantidad_de_plazas_sin_asignacion_de_mantenimiento</to>
             </connector>
-            <connector x="505" y="428" uid="28" color="#FF007F">
+            <connector x="399" y="400" uid="12" color="#FF007F">
+                <from>Cantidad_de_vehiculos_en_mantenimiento</from>
+                <to>Vehiculos_que_regresan_de_mantenimiento</to>
+            </connector>
+            <connector x="556" y="479" uid="13" color="#FF007F">
                 <from>Vehiculos_que_se_retiran_por_mantenimiento</from>
                 <to>Cantidad_de_vehiculos_destinados_a_mantenimiento_correctivo</to>
             </connector>
-            <connector x="754" y="612" uid="29" color="#FF007F">
-                <from>Proporcion_de_vehiculos_que_van_a_mantenimiento_correctivo</from>
-                <to>Cantidad_de_vehiculos_destinados_a_mantenimiento_correctivo</to>
+            <connector x="836" y="408" uid="14" color="#FF007F">
+                <from>Cantidad_promedio_de_malas_maniobras_por_vehiculo</from>
+                <to>Cantidad_de_malas_maniobras</to>
             </connector>
-            <connector x="505" y="433" uid="30" color="#FF007F">
-                <from>Vehiculos_que_se_retiran_por_mantenimiento</from>
-                <to>Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino</to>
+            <connector x="958" y="956" uid="15" color="#FF007F">
+                <from>Capacidad_de_atencion_por_plaza</from>
+                <to>Cantidad_de_plazas_apartadas_por_mantenimiento</to>
             </connector>
-            <connector x="753" y="617" uid="31" color="#FF007F">
-                <from>Proporcion_de_vehiculos_que_van_a_mantenimiento_correctivo</from>
-                <to>Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino</to>
+            <connector x="1008" y="643" uid="16" color="#FF007F">
+                <from>Cantidad_de_vehiculos_destinados_a_mantenimiento_correctivo</from>
+                <to>Demanda_por_mantenimiento</to>
             </connector>
-            <connector x="1077" y="406" uid="32" color="#FF007F">
-                <from>Cantidad_de_fallas_mecanicas</from>
-                <to>Cantidad_de_repariones_preventivas</to>
+            <connector x="545" y="607" uid="17" color="#FF007F">
+                <from>Tasa_de_asignacion</from>
+                <to>Vehiculos_asignados_a_operar</to>
             </connector>
-            <connector x="965" y="578" uid="33" color="#FF007F">
+            <connector x="1015" y="628" uid="18" color="#FF007F">
                 <from>Cantidad_de_vehiculos_destinados_a_mantenimiento_correctivo</from>
                 <to>Reparacion_de_fallas_mecanicas</to>
             </connector>
-            <connector x="1043" y="728" uid="34" color="#FF007F">
-                <from>Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino</from>
+            <connector x="615" y="412" uid="19" color="#FF007F">
+                <from>Tasa_de_inoperatividad_por_falla</from>
+                <to>Vehiculos_que_se_retiran_por_mantenimiento</to>
+            </connector>
+            <connector x="770" y="543" uid="20" color="#FF007F">
+                <from>Cantidad_de_vehiculos_en_operacion</from>
+                <to>Cantidad_de_malas_maniobras</to>
+            </connector>
+            <connector x="555" y="483" uid="21" color="#FF007F">
+                <from>Vehiculos_que_se_retiran_por_mantenimiento</from>
+                <to>Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino</to>
+            </connector>
+            <connector x="1156" y="424" uid="22" color="#FF007F">
+                <from>Cantidad_de_fallas_mecanicas</from>
+                <to>Reparacion_de_fallas_mecanicas</to>
+            </connector>
+            <connector x="804" y="662" uid="23" color="#FF007F">
+                <from>Proporcion_de_vehiculos_que_van_a_mantenimiento_correctivo</from>
+                <to>Cantidad_de_vehiculos_destinados_a_mantenimiento_correctivo</to>
+            </connector>
+            <connector x="919" y="463" uid="24" color="#FF007F">
+                <from>Cantidad_de_malas_maniobras</from>
+                <to>Numero_de_veces_que_ocurre_una_falla_mecanica</to>
+            </connector>
+            <connector x="756" y="611" uid="25" color="#FF007F">
+                <from>Tasa_de_retorno_al_deposito</from>
+                <to>Vehiculos_devueltos_al_deposito</to>
+            </connector>
+            <connector x="557" y="745" uid="26" color="#FF007F">
+                <from>Cantidad_de_vehiculos_que_terminan_el_mantenimiento_por_semana</from>
+                <to>Tasa_de_liberacion_de_plazas</to>
+            </connector>
+            <connector x="881" y="862" uid="27" color="#FF007F">
+                <from>Disponibilidad_de_talleres</from>
+                <to>Cantidad_de_plazas_apartadas_por_mantenimiento</to>
+            </connector>
+            <connector x="1126" y="456" uid="28" color="#FF007F">
+                <from>Cantidad_de_fallas_mecanicas</from>
                 <to>Cantidad_de_repariones_preventivas</to>
             </connector>
-            <connector x="404" y="425" uid="35" color="#FF007F">
+            <connector x="413" y="609" uid="29" color="#FF007F">
+                <from>Tiempo_promedio_de_mantenimiento</from>
+                <to>Vehiculos_que_regresan_de_mantenimiento</to>
+            </connector>
+            <connector x="837" y="865" uid="30" color="#FF007F">
+                <from>Disponibilidad_de_talleres</from>
+                <to>Cantidad_de_plazas_ocupadas</to>
+            </connector>
+            <connector x="1089" y="794" uid="31" color="#FF007F">
+                <from>Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino</from>
+                <to>Demanda_por_mantenimiento</to>
+            </connector>
+            <connector x="902" y="342" uid="32" color="#FF007F">
+                <from>Tasa_de_fallas_mecanicas</from>
+                <to>Numero_de_veces_que_ocurre_una_falla_mecanica</to>
+            </connector>
+            <connector x="707" y="329" uid="33" color="#FF007F">
+                <from>Vehiculos_operativos_que_mostraron_fallas</from>
+                <to>Vehiculos_que_se_retiran_por_mantenimiento</to>
+            </connector>
+            <connector x="803" y="667" uid="34" color="#FF007F">
+                <from>Proporcion_de_vehiculos_que_van_a_mantenimiento_correctivo</from>
+                <to>Cantidad_de_vehiculos_destinados_a_mantenimiento_preventino</to>
+            </connector>
+            <connector x="454" y="475" uid="35" color="#FF007F">
                 <from>Disponibilidad_de_la_flota</from>
                 <to>Cantidad_de_vehiculos_en_mantenimiento</to>
             </connector>
