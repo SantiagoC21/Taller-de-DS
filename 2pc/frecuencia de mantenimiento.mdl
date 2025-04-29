@@ -1,0 +1,315 @@
+{UTF-8}
+Cantidad de fallas mecanicas  = A FUNCTION OF( -Cantidad de reparaciones preventivas,\
+		Numero de veces que ocurre una falla mecanica,-Reparacion de fallas mecanicas)
+	~	
+	~		|
+
+Cantidad de malas maniobras  = A FUNCTION OF( Cantidad de vehiculos en operacion,Cantidad promedio de malas maniobras por vehiculo\
+		)
+	~	
+	~		|
+
+Cantidad de plazas apartadas por mantenimiento  = A FUNCTION OF( Capacidad de atencion por plaza\
+		,Demanda por mantenimiento,Disponibilidad de talleres)
+	~	
+	~		|
+
+Cantidad de plazas ocupadas  = A FUNCTION OF( Cantidad de plazas sin asignacion de mantenimiento\
+		,Disponibilidad de talleres,Total de plazas)
+	~	
+	~		|
+
+Cantidad de plazas sin asignacion de mantenimiento  = A FUNCTION OF( )
+	~	
+	~		|
+
+Cantidad de reparaciones preventivas  = A FUNCTION OF( Cantidad de fallas mecanicas,Cantidad de vehiculos destinados a mantenimiento preventivo\
+		)
+	~	
+	~		|
+
+Cantidad de vehiculos destinados a mantenimiento correctivo  = A FUNCTION OF( Proporcion de vehiculos que van a mantenimiento correctivo\
+		,Vehiculos que se retiran por mantenimiento)
+	~	
+	~		|
+
+Cantidad de vehiculos destinados a mantenimiento preventivo  = A FUNCTION OF( Proporcion de vehiculos que van a mantenimiento correctivo\
+		,Vehiculos que se retiran por mantenimiento)
+	~	
+	~		|
+
+Cantidad de vehiculos en mantenimiento  = A FUNCTION OF( Disponibilidad de la flota,Total de la flota\
+		)
+	~	
+	~		|
+
+Cantidad de vehiculos en operacion  = A FUNCTION OF( Vehiculos asignados a operar,-Vehiculos devueltos al deposito\
+		)
+	~	
+	~		|
+
+Cantidad de vehiculos que terminan el mantenimiento por semana  = A FUNCTION OF( )
+	~	
+	~		|
+
+Cantidad promedio de malas maniobras por vehiculo  = A FUNCTION OF( )
+	~	
+	~		|
+
+Capacidad de atencion por plaza  = A FUNCTION OF( )
+	~	
+	~		|
+
+Demanda por mantenimiento  = A FUNCTION OF( Cantidad de vehiculos destinados a mantenimiento correctivo\
+		,Cantidad de vehiculos destinados a mantenimiento preventivo)
+	~	
+	~		|
+
+Disponibilidad de la flota  = A FUNCTION OF( -Vehiculos asignados a operar,Vehiculos que regresan de mantenimiento\
+		,-Vehiculos que se retiran por mantenimiento)
+	~	
+	~		|
+
+Disponibilidad de talleres  = A FUNCTION OF( -Cantidad de plazas apartadas por mantenimiento\
+		,Cantidad de plazas sin asignacion de mantenimiento)
+	~	
+	~		|
+
+Numero de veces que ocurre una falla mecanica  = A FUNCTION OF( Cantidad de malas maniobras\
+		,Tasa de fallas mecanicas)
+	~	
+	~		|
+
+Proporcion de vehiculos que van a mantenimiento correctivo  = A FUNCTION OF( )
+	~	
+	~		|
+
+Reparacion de fallas mecanicas  = A FUNCTION OF( Cantidad de fallas mecanicas,Cantidad de vehiculos destinados a mantenimiento correctivo\
+		)
+	~	
+	~		|
+
+Tasa de asignacion  = A FUNCTION OF( )
+	~	
+	~		|
+
+Tasa de fallas mecanicas  = A FUNCTION OF( )
+	~	
+	~		|
+
+Tasa de inoperatividad por fallas  = A FUNCTION OF( )
+	~	
+	~		|
+
+Tasa de liberacion de plazas  = A FUNCTION OF( Cantidad de plazas sin asignacion de mantenimiento\
+		,Cantidad de vehiculos que terminan el mantenimiento por semana,Tiempo promedio de mantenimiento\
+		)
+	~	
+	~		|
+
+Tasa de retorno al deposito  = A FUNCTION OF( )
+	~	
+	~		|
+
+Tiempo promedio de mantenimiento  = A FUNCTION OF( )
+	~	
+	~		|
+
+Total de la flota  = A FUNCTION OF( )
+	~	
+	~		|
+
+Total de plazas  = A FUNCTION OF( )
+	~	
+	~		|
+
+Vehiculos asignados a operar  = A FUNCTION OF( Disponibilidad de la flota,Tasa de asignacion\
+		)
+	~	
+	~		|
+
+Vehiculos devueltos al deposito  = A FUNCTION OF( Cantidad de vehiculos en operacion,\
+		Tasa de retorno al deposito)
+	~	
+	~		|
+
+Vehiculos operativos que mostraron fallas  = A FUNCTION OF( Cantidad de vehiculos en operacion\
+		,Tasa de fallas mecanicas)
+	~	
+	~		|
+
+Vehiculos que regresan de mantenimiento  = A FUNCTION OF( Cantidad de vehiculos en mantenimiento\
+		,Tiempo promedio de mantenimiento)
+	~	
+	~		|
+
+Vehiculos que se retiran por mantenimiento  = A FUNCTION OF( Tasa de inoperatividad por fallas\
+		,Vehiculos operativos que mostraron fallas)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,56,2
+11,1,0,-15307,9475,8,6,1,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,2,Disponibilidad de la flota,1143,815,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,3,48,845,815,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,4,6,3,100,0,0,22,0,192,0,-1--1--1,,1|(898,815)|
+1,5,6,2,4,0,0,22,0,192,0,-1--1--1,,1|(1015,815)|
+11,6,0,947,815,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,7,Vehiculos que regresan de mantenimiento,947,853,83,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,8,48,1429,815,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,9,11,2,100,0,0,22,0,192,0,-1--1--1,,1|(1261,815)|
+1,10,11,8,4,0,0,22,0,192,0,-1--1--1,,1|(1372,815)|
+11,11,0,1320,815,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,12,Vehiculos que se retiran por mantenimiento,1320,857,79,34,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,13,Cantidad de vehiculos en operacion,1356,1054,90,31,3,3,0,0,-1,1,0,0,0,0,0,0,0,0
+1,14,16,2,100,0,0,22,0,192,0,-1--1--1,,1|(1131,895)|
+1,15,16,13,4,0,0,22,0,192,0,-1--1--1,,1|(1131,1054)|
+11,16,0,1131,955,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,17,Vehiculos asignados a operar,1213,955,74,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,18,48,1671,1060,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,19,21,13,100,0,0,22,0,192,0,-1--1--1,,1|(1494,1060)|
+1,20,21,18,4,0,0,22,0,192,0,-1--1--1,,1|(1608,1060)|
+11,21,0,1549,1060,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,22,Vehiculos devueltos al deposito,1549,1094,73,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,23,Cantidad de fallas mecanicas,1976,759,62,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,24,48,1574,760,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,25,27,24,100,0,0,22,0,192,0,-1--1--1,,1|(1646,760)|
+1,26,27,23,4,0,0,22,0,192,0,-1--1--1,,1|(1817,760)|
+11,27,0,1715,760,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,28,Numero de veces que ocurre una falla mecanica,1715,804,75,36,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,29,48,2337,756,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,30,32,23,100,0,0,22,0,192,0,-1--1--1,,1|(2090,756)|
+1,31,32,29,4,0,0,22,0,192,0,-1--1--1,,1|(2240,756)|
+11,32,0,2148,756,5,9,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,33,Reparacion de fallas mecanicas,2148,791,62,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,34,48,2009,1060,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,35,37,23,100,0,0,22,0,192,0,-1--1--1,,1|(2009,848)|
+1,36,37,34,4,0,0,22,0,192,0,-1--1--1,,1|(2009,987)|
+11,37,0,2009,917,8,6,33,3,0,0,4,0,0,0,0,0,0,0,0,0
+10,38,Cantidad de reparaciones preventivas,2067,917,50,36,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,39,Disponibilidad de talleres,1770,1305,66,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,40,48,1432,1310,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,41,43,40,100,0,0,22,0,192,0,-1--1--1,,1|(1504,1310)|
+1,42,43,39,4,0,0,22,0,192,0,-1--1--1,,1|(1641,1310)|
+11,43,0,1573,1310,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,44,Cantidad de plazas sin asignacion de mantenimiento,1573,1354,71,36,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,45,48,2092,1304,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,46,48,39,100,0,0,22,0,192,0,-1--1--1,,1|(1898,1304)|
+1,47,48,45,4,0,0,22,0,192,0,-1--1--1,,1|(2027,1304)|
+11,48,0,1966,1304,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,49,Cantidad de plazas apartadas por mantenimiento,1966,1348,71,36,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,50,Tiempo promedio de mantenimiento,1027,1131,76,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,51,Tasa de liberacion de plazas,1299,1225,78,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,52,Cantidad de vehiculos que terminan el mantenimiento por semana,1182,1314,81,46,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,53,Total de plazas,1580,1233,57,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,54,Cantidad de plazas ocupadas,1824,1232,62,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,55,Capacidad de atencion por plaza,2205,1390,69,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,56,Demanda por mantenimiento,1987,1151,58,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,57,Cantidad de vehiculos destinados a mantenimiento preventivo,2277,1171,81,46,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,58,Proporcion de vehiculos que van a mantenimiento correctivo,1720,1138,113,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,59,Cantidad de vehiculos destinados a mantenimiento correctivo,1873,879,88,36,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,60,Cantidad promedio de malas maniobras por vehiculo,1551,816,75,36,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,61,Cantidad de malas maniobras,1712,935,64,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,62,Tasa de fallas mecanicas,1567,665,52,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,63,Vehiculos operativos que mostraron fallas,1431,663,76,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,64,Tasa de inoperatividad por fallas,1243,664,69,36,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,65,Total de la flota,997,646,58,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,66,Cantidad de vehiculos en mantenimiento,794,713,58,36,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,67,Tasa de asignacion,999,987,46,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,68,Tasa de retorno al deposito,1449,1160,59,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,69,2,66,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,70,66,6,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,71,65,66,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,72,50,7,1,0,0,0,0,192,0,-1--1--1,,1|(907,1016)|
+1,73,50,51,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,74,52,51,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,75,43,51,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,76,43,54,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,77,39,54,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,78,39,48,1,0,0,0,0,192,0,-1--1--1,,1|(1847,1403)|
+1,79,55,49,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,80,56,48,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,81,57,56,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,82,57,37,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,83,58,57,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,84,59,56,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,85,58,59,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,86,59,32,1,0,0,0,0,192,0,-1--1--1,,1|(1959,821)|
+1,87,23,37,1,0,0,0,0,192,0,-1--1--1,,1|(1971,838)|
+1,88,23,32,1,0,0,0,0,192,0,-1--1--1,,1|(2084,710)|
+1,89,62,27,1,0,0,0,0,192,0,-1--1--1,,1|(1691,689)|
+1,90,61,28,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,91,60,61,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,92,13,61,1,0,0,0,0,192,0,-1--1--1,,1|(1540,975)|
+1,93,13,21,1,0,0,0,0,192,0,-1--1--1,,1|(1484,1033)|
+1,94,68,22,1,0,0,0,0,192,0,-1--1--1,,1|(1540,1135)|
+1,95,13,63,1,0,0,0,0,192,0,-1--1--1,,1|(1470,865)|
+1,96,62,63,1,0,0,0,0,192,0,-1--1--1,,1|(1521,611)|
+1,97,64,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,98,63,11,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,99,12,59,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,100,12,57,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,101,2,16,1,0,0,0,0,192,0,-1--1--1,,1|(1179,884)|
+1,102,67,16,1,0,0,0,0,192,0,-1--1--1,,1|(1060,931)|
+1,103,53,54,1,0,0,0,0,192,0,-1--1--1,,1|(1690,1181)|
+///---\\\
+:L<%^E!@
+5:Cantidad de malas maniobras
+19:56,0
+24:0
+25:0
+26:0
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1
