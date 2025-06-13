@@ -25,7 +25,7 @@ component = Component()
 
 _control_vars = {
     "initial_time": lambda: 2015,
-    "final_time": lambda: 2115,
+    "final_time": lambda: 2028,
     "time_step": lambda: 1,
     "saveper": lambda: time_step(),
 }
@@ -102,15 +102,25 @@ def time_step():
     name="Cantidad de accidentes",
     comp_type="Auxiliary",
     comp_subtype="Normal",
-    depends_on={"congestion_vehicular": 1, "fluidez_del_trafico": 1},
+    depends_on={
+        "porcentaje_de_congestion_vehicular": 1,
+        "tasa_de_fluidez_del_trafico": 1,
+        "discrepacia": 1,
+    },
 )
 def cantidad_de_accidentes():
-    return congestion_vehicular() * 0.05 + (1 - fluidez_del_trafico()) * 0.02
+    return integer(
+        (
+            porcentaje_de_congestion_vehicular() * 0.05
+            + (1 - tasa_de_fluidez_del_trafico()) * 0.02
+        )
+        * discrepacia()
+    )
 
 
 @component.add(name="Objetivo", comp_type="Constant", comp_subtype="Normal")
 def objetivo():
-    return 500
+    return 600
 
 
 @component.add(
@@ -120,7 +130,7 @@ def objetivo():
     depends_on={"objetivo": 1, "accidentes_de_transito": 1},
 )
 def discrepacia():
-    return integer(objetivo() - accidentes_de_transito())
+    return float(np.abs(integer(objetivo() - accidentes_de_transito())))
 
 
 @component.add(
@@ -130,7 +140,7 @@ def discrepacia():
     depends_on={"objetivo": 1, "accidentes_de_transito": 1},
 )
 def error_faltante():
-    return objetivo() - accidentes_de_transito()
+    return float(np.abs(objetivo() - accidentes_de_transito()))
 
 
 @component.add(
@@ -150,7 +160,7 @@ def accidentes_de_transito():
 
 
 _integ_accidentes_de_transito = Integ(
-    lambda: cantidad_de_accidentes() - accidentes_prevenidos(),
+    lambda: integer(cantidad_de_accidentes() - accidentes_prevenidos()),
     lambda: 1000,
     "_integ_accidentes_de_transito",
 )
@@ -203,12 +213,12 @@ _integ_confianza_publica = Integ(
 
 
 @component.add(
-    name="Congestion vehicular",
+    name="Porcentaje de congestion vehicular",
     comp_type="Auxiliary",
     comp_subtype="Normal",
     depends_on={"calidad_de_infraestructura_vial": 1},
 )
-def congestion_vehicular():
+def porcentaje_de_congestion_vehicular():
     return 1 - calidad_de_infraestructura_vial() * 0.01
 
 
@@ -249,17 +259,17 @@ def deterioro_de_infraestructura():
     depends_on={"accidentes_de_transito": 1, "total_regulaciones_viales": 1},
 )
 def accidentes_prevenidos():
-    return accidentes_de_transito() * total_regulaciones_viales() * 0.01
+    return integer(accidentes_de_transito() * total_regulaciones_viales() * 0.01)
 
 
 @component.add(
-    name="Fluidez del trafico",
+    name="Tasa de fluidez del trafico",
     comp_type="Auxiliary",
     comp_subtype="Normal",
-    depends_on={"congestion_vehicular": 1},
+    depends_on={"porcentaje_de_congestion_vehicular": 1},
 )
-def fluidez_del_trafico():
-    return 1 / (1 + congestion_vehicular())
+def tasa_de_fluidez_del_trafico():
+    return 1 / (1 + porcentaje_de_congestion_vehicular())
 
 
 @component.add(
@@ -423,10 +433,16 @@ def satisfaccion_de_autoridades_de_transporte():
     name="Satisfaccion de usuarios",
     comp_type="Auxiliary",
     comp_subtype="Normal",
-    depends_on={"calidad_de_infraestructura_vial": 1, "congestion_vehicular": 1},
+    depends_on={
+        "calidad_de_infraestructura_vial": 1,
+        "porcentaje_de_congestion_vehicular": 1,
+    },
 )
 def satisfaccion_de_usuarios():
-    return calidad_de_infraestructura_vial() * 0.05 - congestion_vehicular() * 0.03
+    return (
+        calidad_de_infraestructura_vial() * 0.05
+        - porcentaje_de_congestion_vehicular() * 0.03
+    )
 
 
 @component.add(
@@ -448,10 +464,10 @@ def tasa_de_recaudacion():
     name="Tasa de viajes de transporte",
     comp_type="Auxiliary",
     comp_subtype="Normal",
-    depends_on={"fluidez_del_trafico": 1, "pagos_de_tributos_de_transporte": 1},
+    depends_on={"tasa_de_fluidez_del_trafico": 1, "pagos_de_tributos_de_transporte": 1},
 )
 def tasa_de_viajes_de_transporte():
-    return fluidez_del_trafico() * 0.1 + pagos_de_tributos_de_transporte() * 0.1
+    return tasa_de_fluidez_del_trafico() * 0.1 + pagos_de_tributos_de_transporte() * 0.1
 
 
 @component.add(
