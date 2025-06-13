@@ -1,0 +1,130 @@
+{UTF-8}
+Gastos Totales=
+	Puentes en Construccion*1200+Mantenimiento
+	~	
+	~		|
+
+Mantenimiento=
+	Puentes Construidos*12
+	~	
+	~		|
+
+Puentes Construidos= INTEG (
+	Puentes en Construccion-Puentes Obsoletos,
+		80)
+	~	
+	~		|
+
+Puentes en Construccion=
+	INTEGER(Puentes Construidos*Tasa Puentes Construccion)
+	~	
+	~		|
+
+Puentes Obsoletos=
+	INTEGER(Puentes Construidos*Tasa Puentes Obsoletos)
+	~	
+	~		|
+
+Tasa Puentes Construccion=
+	0.04
+	~	
+	~		|
+
+Tasa Puentes Obsoletos=
+	0.009
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 2032
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 2022
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,90,0
+10,1,Puentes Construidos,526,218,52,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,2,48,753,218,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,3,5,1,100,0,0,22,0,192,0,-1--1--1,,1|(612,218)|
+1,4,5,2,4,0,0,22,0,192,0,-1--1--1,,1|(700,218)|
+11,5,0,652,218,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,6,Puentes Obsoletos,652,250,62,24,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,7,48,280,216,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,8,10,7,100,0,0,22,0,192,0,-1--1--1,,1|(329,216)|
+1,9,10,1,4,0,0,22,0,192,0,-1--1--1,,1|(427,216)|
+11,10,0,375,216,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,11,Puentes en Construccion,375,246,68,22,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,12,Tasa Puentes Construccion,246,355,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,13,Tasa Puentes Obsoletos,771,352,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,14,12,11,1,0,0,0,0,192,0,-1--1--1,,1|(368,319)|
+1,15,13,6,1,0,0,0,0,192,0,-1--1--1,,1|(712,350)|
+1,16,1,11,1,0,0,0,0,192,0,-1--1--1,,1|(405,274)|
+1,17,1,6,1,0,0,0,0,192,0,-1--1--1,,1|(567,290)|
+10,18,Mantenimiento,456,68,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,19,1,18,1,0,0,0,0,192,0,-1--1--1,,1|(533,149)|
+10,20,Gastos Totales,182,80,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,21,11,20,1,0,0,0,0,192,0,-1--1--1,,1|(346,168)|
+1,22,18,20,1,0,0,0,0,192,0,-1--1--1,,1|(350,57)|
+///---\\\
+:L<%^E!@
+4:Time
+5:Puentes Obsoletos
+9:current
+19:90,0
+24:2022
+25:2032
+26:2032
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:1
+72:0
+73:0
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:0
+41:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Arial Unicode MS|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

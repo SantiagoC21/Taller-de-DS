@@ -1,0 +1,228 @@
+{UTF-8}
+Fondos asignados para mantenimiento=Fondos para mantenimiento*Tasa de mantenimiento
+	~	
+	~		|
+
+Fondos para mantenimiento= INTEG (Fondos asignados para mantenimiento-Gastos en mantenimiento\
+		,
+		10000)
+	~	
+	~		|
+
+Pistas en mantenimiento= INTEG (Pistas retiradas para mantenimiento-Pistas reparadas,
+		100)
+	~	
+	~		|
+
+Monto Total Pistas=Pistas en construccion*1200+Gastos en mantenimiento
+	~	
+	~		|
+
+Costo promedio por mantenimiento=30
+	~	
+	~		|
+
+Pistas retiradas para mantenimiento=Pistas en mantenimiento*Tasa de retiro de pistas para mantenimiento
+	~	
+	~		|
+
+Tasa de mantenimiento=0.01
+	~	
+	~		|
+
+Gastos en mantenimiento=Costo promedio por mantenimiento*Pistas en mantenimiento
+	~	
+	~		|
+
+Tasa de retiro de pistas para mantenimiento=0.003
+	~	
+	~		|
+
+Pistas reparadas=Pistas en mantenimiento*Tasa de reparación de pistas
+	~	
+	~		|
+
+Tasa de reparación de pistas=0.002
+	~	
+	~		|
+
+Cantidad de litros de pintura=
+	INTEGER(Pistas asfaltadas*0.6)
+	~	
+	~		|
+
+Cantidad de mano de obra persona=
+	INTEGER(Pistas asfaltadas*0.3)
+	~	
+	~		|
+
+Cantidad de maquinarias total=
+	INTEGER(Pistas asfaltadas*0.5)
+	~	
+	~		|
+
+Cantidad maquinas asfaltos=
+	INTEGER(Pistas asfaltadas*0.4)
+	~	
+	~		|
+
+Pistas asfaltadas=
+	INTEGER(Pistas Construidas*0.8)
+	~	
+	~		|
+
+Pistas Construidas= INTEG (
+	Pistas en construccion-Pistas obsoletas,
+		130)
+	~	
+	~		|
+
+Pistas en construccion=
+	INTEGER(Pistas Construidas*Tasa Pistas Construccion)
+	~	
+	~		|
+
+Pistas obsoletas=
+	INTEGER(Pistas Construidas*Tasa Pistas Obsoletas)
+	~	
+	~		|
+
+Tasa Pistas Construccion=
+	0.03
+	~	
+	~		|
+
+Tasa Pistas Obsoletas=
+	0.009
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Parámetros de control de simulación
+	|
+
+FINAL TIME  = 2032
+	~	Año
+	~	El período final de la simulación.
+	|
+
+INITIAL TIME  = 2022
+	~	Año
+	~	El período inicial de la simulación.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Año [0,?]
+	~	La frecuencia con la que se almacena la salida.
+	|
+
+TIME STEP  = 1
+	~	Año [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*Pantalla 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,90,0
+10,1,Pistas Construidas,713,89,50,20,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,2,48,475,91,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,3,5,2,100,0,0,22,0,192,0,-1--1--1,,1|(531,91)|
+1,4,5,1,4,0,0,22,0,192,0,-1--1--1,,1|(626,91)|
+11,5,0,584,91,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,6,Pistas en construccion,584,129,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,7,48,932,89,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,8,10,1,100,0,0,22,0,192,0,-1--1--1,,1|(802,89)|
+1,9,10,7,4,0,0,22,0,192,0,-1--1--1,,1|(887,89)|
+11,10,0,847,89,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,11,Pistas obsoletas,847,127,75,30,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,12,Tasa Pistas Construccion,391,208,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,13,Tasa Pistas Obsoletas,982,193,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,14,Monto Total Pistas,365,9,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,15,Cantidad de litros de pintura,492,-9,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,16,Pistas asfaltadas,737,-30,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,17,Cantidad de mano de obra persona,939,-5,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,18,Cantidad de maquinarias total,1077,-50,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,19,Cantidad maquinas asfaltos,1018,54,75,30,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,20,12,6,1,0,0,0,0,192,0,-1--1--1,,1|(528,186)|
+1,21,1,6,1,0,0,0,0,192,0,-1--1--1,,1|(643,66)|
+1,22,1,11,1,0,0,0,0,192,0,-1--1--1,,1|(790,69)|
+1,23,13,11,1,0,0,0,0,192,0,-1--1--1,,1|(885,213)|
+1,24,1,16,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,25,16,15,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,26,6,14,1,0,0,0,0,192,0,-1--1--1,,1|(508,53)|
+1,27,16,19,1,0,0,0,0,192,0,-1--1--1,,1|(861,40)|
+1,28,16,17,1,0,0,0,0,192,0,-1--1--1,,1|(855,-35)|
+1,29,16,18,1,0,0,0,0,192,0,-1--1--1,,1|(874,-77)|
+10,30,Pistas en mantenimiento,416,355,58,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,31,48,197,349,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,32,34,31,100,0,0,22,0,192,0,-1--1--1,,1|(241,349)|
+1,33,34,30,4,0,0,22,0,192,0,-1--1--1,,1|(323,349)|
+11,34,0,282,349,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,35,Pistas retiradas para mantenimiento,282,383,62,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,36,48,640,355,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,37,39,30,100,0,0,22,0,192,0,-1--1--1,,1|(510,355)|
+1,38,39,36,4,0,0,22,0,192,0,-1--1--1,,1|(594,355)|
+11,39,0,552,355,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,40,Pistas reparadas,552,389,46,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,Fondos para mantenimiento,976,353,58,26,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,42,48,759,351,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,43,45,42,100,0,0,22,0,192,0,-1--1--1,,1|(807,351)|
+1,44,45,41,4,0,0,22,0,192,0,-1--1--1,,1|(888,351)|
+11,45,0,852,351,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,46,Fondos asignados para mantenimiento,852,385,62,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,47,48,1224,353,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,48,50,41,100,0,0,22,0,192,0,-1--1--1,,1|(1076,353)|
+1,49,50,47,4,0,0,22,0,192,0,-1--1--1,,1|(1172,353)|
+11,50,0,1124,353,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,51,Gastos en mantenimiento,1124,387,58,26,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,52,Costo promedio por mantenimiento,1183,492,62,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,53,30,50,1,0,0,0,0,192,0,-1--1--1,,1|(798,282)|
+1,54,52,51,1,0,0,0,0,192,0,-1--1--1,,1|(1221,421)|
+10,55,Tasa de retiro de pistas para mantenimiento,211,443,62,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,56,Tasa de reparación de pistas,672,467,58,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,57,30,34,1,0,0,0,0,192,0,-1--1--1,,1|(368,289)|
+1,58,30,39,1,0,0,0,0,192,0,-1--1--1,,1|(478,278)|
+1,59,56,40,1,0,0,0,0,192,0,-1--1--1,,1|(663,405)|
+1,60,55,35,1,0,0,0,0,192,0,-1--1--1,,1|(196,400)|
+10,61,Tasa de mantenimiento,831,475,58,26,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,62,61,46,1,0,0,0,0,192,0,-1--1--1,,1|(795,438)|
+1,63,41,45,1,0,0,0,0,192,0,-1--1--1,,1|(874,297)|
+1,64,50,14,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+///---\\\
+:L<%^E!@
+1:Actual.vdfx
+4:Time
+5:Costo promedio por mantenimiento
+9:Actual
+19:90,0
+24:2022
+25:2032
+26:2032
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Courier|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

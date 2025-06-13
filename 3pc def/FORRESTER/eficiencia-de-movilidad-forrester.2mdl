@@ -1,0 +1,385 @@
+{UTF-8}
+Calidad de la infraestructura vial=
+	Tasa de inversión de infraestructura*50
+	~	
+	~		|
+
+Calidad de transporte publico=
+	Tasa de vehiculos de transporte publico en buen estado*2500/Estres a transportistas
+	~	
+	~		|
+
+Cantidad del transporte informal=
+	4500/Nivel de educacion vial/Politicas de regulacion de transporte
+	~	
+	~		|
+
+Casos que han sido solucionados=
+	INTEGER( Extorsiones a transportistas*Seguridad*0.5)
+	~	
+	~		|
+
+Congestion vehicular=
+	(Total de vehiculos en circulación+Total de infracciones+Cruce de pista indebidos+Paradas no autorizadas\
+		)/100
+	~	
+	~		|
+
+Cruce de pista indebidos=
+	Tasa de transeuntes que cruzan indebidamente*500/Nivel de educacion vial
+	~	
+	~		|
+
+Dificultad de movilidad=
+	Congestion vehicular*1
+	~	
+	~		|
+
+Eficiencia de movilidad= INTEG (
+	INTEGER(Facilidad de movilidad-Dificultad de movilidad),
+		30)
+	~	
+	~		|
+
+Estrategias de ejecucion de obras=
+	10
+	~	
+	~		|
+
+Estres a transportistas=
+	Extorsiones a transportistas*Tasa de presion de pasajeros/Calidad de la infraestructura vial\
+		+Total de infracciones
+	~	
+	~		|
+
+Extorsiones a transportistas= INTEG (
+	INTEGER(Transportistas extorsionados-Casos que han sido solucionados),
+		325)
+	~	
+	~		|
+
+Facilidad de movilidad=
+	Fluidez del trafico
+	~	
+	~		|
+
+Fluidez del trafico=
+	(Calidad de la infraestructura vial*Uso del transporte publico*Estrategias de ejecucion de obras\
+		)/86
+	~	
+	~		|
+
+Infracciones antiguas=
+	INTEGER(Total de infracciones*0.45)
+	~	
+	~		|
+
+Infracciones nuevas=
+	INTEGER( Total de infracciones*Tasa de infracciones/Nivel de educacion vial )
+	~	
+	~		|
+
+Nivel de educacion vial=
+	Tasa de educacion vial*2.5
+	~	
+	~		|
+
+Paradas no autorizadas=
+	Tasa de presion de pasajeros*Cantidad del transporte informal
+	~	
+	~		|
+
+Poblacion que utiliza aplicaciones de transporte= INTEG (
+	INTEGER(Usuarios de aplicaciones-Usuarios que dejan de usar aplicaciones),
+		532)
+	~	
+	~		|
+
+Politicas de regulacion de transporte=
+	15000
+	~	
+	~		|
+
+Seguridad=
+	Tasa de seguridad*0.75
+	~	
+	~		|
+
+Tasa de educacion vial=
+	0.3+STEP(0.05, 2028 )+STEP(0.05, 2031)+STEP(0.05, 2034 )
+	~	
+	~		|
+
+Tasa de extorsiones a transportistas=
+	0.05-STEP(0.005, 2028 )-STEP(0.005, 2031)-STEP(0.005, 2034 )
+	~	
+	~		|
+
+Tasa de infracciones=
+	0.35-STEP(0.025, 2028 )-STEP(0.025, 2031)-STEP(0.025, 2034 )
+	~	
+	~		|
+
+Tasa de inversión de infraestructura=
+	0.5+STEP(0.1, 2028 )+STEP(0.05, 2031)-STEP(0.125, 2033 )
+	~	
+	~		|
+
+Tasa de personas que usan aplicaciones de transporte=
+	0.1+STEP(0.05, 2028 )+STEP(0.05, 2031)+STEP(0.05, 2034 )
+	~	
+	~		|
+
+Tasa de presion de pasajeros=
+	0.4-STEP(0.05, 2028 )-STEP(0.05, 2031)-STEP(0.05, 2034 )
+	~	
+	~		|
+
+Tasa de seguridad=
+	0.5+STEP(0.05, 2028 )+STEP(0.05, 2031)+STEP(0.05, 2034 )
+	~	
+	~		|
+
+Tasa de transeuntes que cruzan indebidamente=
+	0.5-STEP(0.025, 2028 )-STEP(0.05, 2031)+STEP(0.1,2033 )
+	~	
+	~		|
+
+Tasa de vehiculos de transporte publico en buen estado=
+	0.85+STEP(0.025, 2028 )+STEP(0.025, 2031)+STEP(0.025, 2034 )
+	~	
+	~		|
+
+Tasa de vehiculos en circulacion=
+	0.2+STEP(0.05, 2028 )+STEP(0.05, 2031)+STEP(0.05, 2034 )
+	~	
+	~		|
+
+Total de infracciones= INTEG (
+	INTEGER( Infracciones nuevas-Infracciones antiguas ),
+		1274)
+	~	
+	~		|
+
+Total de vehiculos en circulación= INTEG (
+	INTEGER(Vehiculos circulantes-Vehiculos que ya no circulan),
+		3578)
+	~	
+	~		|
+
+Transportistas extorsionados=
+	INTEGER(Extorsiones a transportistas*Tasa de extorsiones a transportistas)
+	~	
+	~		|
+
+Uso del transporte publico=
+	Calidad de transporte publico*5000/Poblacion que utiliza aplicaciones de transporte
+	~	
+	~		|
+
+Usuarios de aplicaciones=
+	INTEGER(Tasa de personas que usan aplicaciones de transporte*Poblacion que utiliza aplicaciones de transporte\
+		/Eficiencia de movilidad/Seguridad*2)
+	~	
+	~		|
+
+Usuarios que dejan de usar aplicaciones=
+	Uso del transporte publico/5
+	~	
+	~		|
+
+Vehiculos circulantes=
+	INTEGER(Tasa de vehiculos en circulacion*Total de vehiculos en circulación*0.9)
+	~	
+	~		|
+
+Vehiculos que ya no circulan=
+	INTEGER(Uso del transporte publico*40)
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 2035
+	~	Year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 2026
+	~	Year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP 
+	~	Year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$-1--1--1,0,|12||-1--1--1|-1--1--1|-1--1--1|-1--1--1|-1--1--1|96,96,68,0
+10,1,Poblacion que utiliza aplicaciones de transporte,610,206,86,42,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,2,Extorsiones a transportistas,420,472,65,29,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,3,Total de vehiculos en circulación,1131,145,82,29,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,4,Total de infracciones,1533,563,56,29,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,5,Tasa de personas que usan aplicaciones de transporte,259,133,100,42,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,6,48,390,195,10,8,0,3,0,0,-1,1,0,0,0,0,0,0,0,0
+1,7,9,6,100,0,0,22,0,192,0,-1--1--1,,1|(423,195)|
+1,8,9,1,4,0,0,22,0,192,0,-1--1--1,,1|(491,195)|
+11,9,0,453,195,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,10,Usuarios de aplicaciones,453,232,57,29,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,11,48,855,195,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,12,14,1,100,0,0,22,0,192,0,-1--1--1,,1|(727,195)|
+1,13,14,11,4,0,0,22,0,192,0,-1--1--1,,1|(808,195)|
+11,14,0,765,195,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,15,Usuarios que dejan de usar aplicaciones,765,245,64,42,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,16,48,1302,566,14,8,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,17,19,16,100,0,0,22,0,192,0,-1--1--1,,1|(1348,566)|
+1,18,19,4,4,0,0,22,0,192,0,-1--1--1,,1|(1435,566)|
+11,19,0,1387,566,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,20,Infracciones nuevas,1387,603,56,29,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,21,48,1704,561,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,22,24,4,100,0,0,22,0,192,0,-1--1--1,,1|(1611,561)|
+1,23,24,21,4,0,0,22,0,192,0,-1--1--1,,1|(1670,561)|
+11,24,0,1640,561,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,25,Infracciones antiguas,1640,598,56,29,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,26,48,134,467,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,27,29,26,100,0,0,22,0,192,0,-1--1--1,,1|(185,467)|
+1,28,29,2,4,0,0,22,0,192,0,-1--1--1,,1|(297,467)|
+11,29,0,233,467,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,30,Transportistas extorsionados,233,504,66,29,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,31,48,667,473,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,32,34,2,100,0,0,22,0,192,0,-1--1--1,,1|(524,473)|
+1,33,34,31,4,0,0,22,0,192,0,-1--1--1,,1|(616,473)|
+11,34,0,570,473,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,35,Casos que han sido solucionados,570,510,81,29,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,36,48,877,142,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,37,39,36,100,0,0,22,0,192,0,-1--1--1,,1|(909,142)|
+1,38,39,3,4,0,0,22,0,192,0,-1--1--1,,1|(996,142)|
+11,39,0,938,142,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,40,Vehiculos circulantes,938,179,51,29,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,41,Tasa de vehiculos de transporte publico en buen estado,219,291,99,42,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,42,Calidad de transporte publico,589,367,70,31,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,43,Tasa de presion de pasajeros,766,532,73,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,44,Paradas no autorizadas,867,327,55,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,45,Cantidad del transporte informal,1055,256,59,42,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,46,Uso del transporte publico,1244,343,63,31,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,47,Politicas de regulacion de transporte,1423,261,63,42,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,48,Nivel de educacion vial,1394,433,65,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,49,Tasa de educacion vial,1562,366,65,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,50,Congestion vehicular,1214,504,52,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,51,Fluidez del trafico,821,649,50,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,52,Cruce de pista indebidos,1046,569,66,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,53,Tasa de transeuntes que cruzan indebidamente,1475,782,93,42,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,54,Estrategias de ejecucion de obras,914,429,86,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,55,Calidad de la infraestructura vial,757,746,87,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,56,Tasa de inversión de infraestructura,428,755,84,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,57,Tasa de infracciones,1513,705,56,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,58,Seguridad,426,595,47,22,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,59,Estres a transportistas,559,706,65,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,60,Tasa de seguridad,217,594,47,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,61,Tasa de extorsiones a transportistas,49,411,65,42,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,62,61,29,1,0,0,0,0,192,0,-1--1--1,,1|(171,426)|
+1,63,2,29,1,0,0,0,0,192,0,-1--1--1,,1|(360,433)|
+1,64,60,58,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,65,2,59,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,66,59,42,1,0,0,0,0,192,0,-1--1--1,,1|(610,393)|
+1,67,41,42,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,68,5,9,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,69,58,9,1,0,0,0,0,192,0,-1--1--1,,1|(377,243)|
+1,70,58,34,1,0,0,0,0,192,0,-1--1--1,,1|(492,593)|
+1,71,2,34,1,0,0,0,0,192,0,-1--1--1,,1|(520,445)|
+1,72,54,51,1,0,0,0,0,192,0,-1--1--1,,1|(918,558)|
+1,73,55,51,1,0,0,0,0,192,0,-1--1--1,,1|(754,663)|
+1,74,55,59,1,0,0,0,0,192,0,-1--1--1,,1|(710,717)|
+1,75,43,59,1,0,0,0,0,192,0,-1--1--1,,1|(698,629)|
+1,76,43,44,1,0,0,0,0,192,0,-1--1--1,,1|(728,367)|
+1,77,45,44,1,0,0,0,0,192,0,-1--1--1,,1|(946,251)|
+1,78,44,50,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+1,79,52,50,1,0,0,0,0,192,0,-1--1--1,,1|(1139,505)|
+1,80,4,50,1,0,0,0,0,192,0,-1--1--1,,1|(1392,497)|
+1,81,3,50,1,0,0,0,0,192,0,-1--1--1,,1|(1149,317)|
+1,82,42,46,1,0,0,0,0,192,0,-1--1--1,,1|(915,381)|
+1,83,53,52,1,0,0,0,0,192,0,-1--1--1,,1|(1325,673)|
+1,84,56,55,1,0,0,0,0,192,0,-1--1--1,,1|(600,794)|
+1,85,57,19,1,0,0,0,0,192,0,-1--1--1,,1|(1456,604)|
+1,86,48,19,1,0,0,0,0,192,0,-1--1--1,,1|(1371,495)|
+1,87,49,48,1,0,0,0,0,192,0,-1--1--1,,1|(1485,435)|
+1,88,47,45,1,0,0,0,0,192,0,-1--1--1,,1|(1239,228)|
+12,89,48,1387,136,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,90,92,3,100,0,0,22,0,192,0,-1--1--1,,1|(1248,136)|
+1,91,92,89,4,0,0,22,0,192,0,-1--1--1,,1|(1336,136)|
+11,92,0,1290,136,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,93,Vehiculos que ya no circulan,1290,173,64,29,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,94,46,92,1,0,0,0,0,192,0,-1--1--1,,1|(1281,257)|
+1,95,46,51,1,0,0,0,0,192,0,-1--1--1,,1|(915,519)|
+10,96,Tasa de vehiculos en circulacion,764,122,80,29,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,97,96,39,1,0,0,0,0,192,0,-1--1--1,,1|(901,127)|
+1,98,3,39,1,0,0,0,0,192,0,-1--1--1,,1|(1000,112)|
+1,99,46,14,1,0,0,0,0,192,0,-1--1--1,,1|(998,296)|
+1,100,4,59,1,0,0,0,0,192,0,-1--1--1,,1|(1298,735)|
+1,101,48,45,1,0,0,0,0,192,0,-1--1--1,,1|(1313,319)|
+10,102,Eficiencia de movilidad,1053,702,58,29,3,3,0,0,-1,0,0,0,0,0,0,0,0,0
+12,103,48,868,698,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,104,111,103,100,0,0,22,0,192,0,-1--1--1,,1|(904,698)|
+1,105,111,102,4,0,0,22,0,192,0,-1--1--1,,1|(968,698)|
+12,106,48,1274,701,10,6,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,107,113,102,100,0,0,22,0,192,0,-1--1--1,,1|(1145,701)|
+1,108,113,106,4,0,0,22,0,192,0,-1--1--1,,1|(1228,701)|
+1,109,51,111,1,0,0,0,0,192,0,-1--1--1,,1|(913,664)|
+1,110,50,113,0,0,0,0,0,192,0,-1--1--1,,1|(0,0)|
+11,111,0,936,698,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,112,Facilidad de movilidad,936,735,56,29,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+11,113,0,1186,701,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,114,Dificultad de movilidad,1186,738,59,29,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,115,1,46,1,0,0,0,0,192,0,-1--1--1,,1|(863,371)|
+1,116,48,52,1,0,0,0,0,192,0,-1--1--1,,1|(1214,419)|
+1,117,102,9,1,0,0,0,0,192,0,-1--1--1,,1|(776,403)|
+1,118,1,9,1,0,0,0,0,192,0,-1--1--1,,1|(458,186)|
+1,119,4,19,1,0,0,0,0,192,0,-1--1--1,,1|(1437,507)|
+1,120,4,24,1,0,0,0,0,192,0,-1--1--1,,1|(1612,508)|
+///---\\\
+:L<%^E!@
+1:current.vdfx
+4:Time
+5:Total de infracciones
+9:current
+19:68,0
+24:2026
+25:2035
+26:2035
+23:0
+15:0,0,0,0,0,0
+27:0,
+34:0,
+42:0
+72:0
+73:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Vensim Sans|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1

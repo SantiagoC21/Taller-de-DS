@@ -1,0 +1,151 @@
+import os
+import pysd
+import matplotlib.pyplot as plt
+
+def funcAccidentesTransito():
+    modelo = pysd.read_vensim('FORRESTER-Satisfaccion_autoridades.mdl')
+    valores = modelo.run(return_columns = ['Accidentes de tránsito'])
+    tabla = valores.head(6)
+    print(tabla)
+    valores.plot()
+    plt.ylabel('Cantidad')
+    plt.xlabel('Años')
+    plt.legend(loc='upper center')
+    plt.legend(loc='center left')
+    plt.title("Accidentes de tránsito")
+    plt.show()
+    return plt
+
+def funcCantidadAccidentes():
+    modelo = pysd.read_vensim('FORRESTER-Satisfaccion_autoridades.mdl')
+    valores = modelo.run(return_columns = ['Cantidad de accidentes'])
+    tabla = valores.head(6)
+    print(tabla)
+    valores.plot()
+    plt.ylabel('Cantidad')
+    plt.xlabel('Años')
+    plt.legend(loc='upper center')
+    plt.legend(loc='center left')
+    plt.title("Cantidad de accidentes")
+    plt.show()
+    os.system ("cls")
+    return plt
+
+def funcAccidentesPrevenidos():
+    modelo = pysd.read_vensim('FORRESTER-Satisfaccion_autoridades.mdl')
+    valores = modelo.run(return_columns = ['Accidentes prevenidos'])
+    tabla = valores.head(6)
+    print(tabla)
+    valores.plot()
+    plt.ylabel('Cantidad')
+    plt.xlabel('Años')
+    plt.legend(loc='upper center')
+    plt.legend(loc='center left')
+    plt.title("Accidentes Prevenidos")
+    plt.show()
+    os.system ("cls")
+    return plt
+
+def funcDiscrepancia():
+    modelo = pysd.read_vensim('FORRESTER-Satisfaccion_autoridades.mdl')
+    valores = modelo.run(return_columns = ['Discrepacia'])
+    tabla = valores.head(6)
+    print(tabla)
+    valores.plot()
+    plt.ylabel('Cantidad')
+    plt.xlabel('Años')
+    plt.legend(loc='upper center')
+    plt.legend(loc='center left')
+    plt.title("Discrepancia")
+    plt.show()
+    os.system ("cls")
+    return plt
+
+def funcCongestionVehicular():
+    modelo = pysd.read_vensim('FORRESTER-Satisfaccion_autoridades.mdl')
+    valores = modelo.run(return_columns = ['Congestion vehicular'])
+    tabla = valores.head(6)
+    print(tabla)
+    valores.plot()
+    plt.ylabel('Cantidad')
+    plt.xlabel('Años')
+    plt.legend(loc='upper center')
+    plt.legend(loc='center left')
+    plt.title("Congestion vehicular")
+    plt.show()
+    os.system ("cls")
+    return plt
+
+def funcFluidezTrafico():
+    modelo = pysd.read_vensim('FORRESTER-Satisfaccion_autoridades.mdl')
+    valores = modelo.run(return_columns = ['Fluidez del trafico'])
+    tabla = valores.head(6)
+    print(tabla)
+    valores.plot()
+    plt.ylabel('Cantidad')
+    plt.xlabel('Años')
+    plt.legend(loc='upper center')
+    plt.legend(loc='center left')
+    plt.title("Fluidez del trafico")
+    plt.show()
+    os.system ("cls")
+    return plt
+
+def funcRegulacionesViales():
+    modelo = pysd.read_vensim('FORRESTER-Satisfaccion_autoridades.mdl')
+    valores = modelo.run(return_columns = ['Total regulaciones viales'])
+    tabla = valores.head(6)
+    print(tabla)
+    valores.plot()
+    plt.ylabel('Cantidad')
+    plt.xlabel('Años')
+    plt.legend(loc='upper center')
+    plt.legend(loc='center left')
+    plt.title("Regulaciones Viales")
+    plt.show()
+    os.system ("cls")
+    return plt
+
+def menuP():
+    print(" \n\tModulo: Satisfaccion de Autoridades (PySd) 2025 ")
+    print("-"*70)
+    print("\tMenu Principal")
+    print("-"*60)
+    print("\t<1> Accidentes de tránsito")
+    print("\t<2> Cantidad de Accidentes")
+    print("\t<3> Accidentes Prevenidos")
+    print("\t<4> Discrepancia")
+    print("\t<5> Congestion vehicular")
+    print("\t<6> Fluidez del trafico")
+    print("\t<7> Total regulaciones viales")
+    print("\t<8> Salir")
+    print("-"*60)
+    opc=int(input(" Ingrese opcion= "))
+    if opc==1:
+        funcAccidentesTransito()
+        menuP()
+    elif opc==2:
+         funcCantidadAccidentes()
+         menuP()
+    elif opc==3:
+         funcAccidentesPrevenidos()
+         menuP()
+    elif opc==4:
+        funcDiscrepancia()
+        menuP()
+    elif opc==5:
+        funcCongestionVehicular()
+        menuP()
+    elif opc==6:
+        funcFluidezTrafico()
+        menuP()
+    elif opc==7:
+        funcRegulacionesViales()
+        menuP()
+    else:
+        exit()
+
+if __name__=='__main__':
+    menuP()
+
+
