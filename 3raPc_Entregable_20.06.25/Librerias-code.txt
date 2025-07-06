@@ -1,0 +1,5 @@
+pip install pysd
+pip install pandas
+pip install numpy
+pip install pyqt5
+pip install matplotlib
